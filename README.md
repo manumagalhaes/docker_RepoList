@@ -127,3 +127,16 @@ If stopped containers don't allow you to remove images:
 
 Remove images:
 `docker image rm <image_id>`
+
+
+List containers:
+`docker container ls -a`
+
+Stop container:
+`docker container stop [container_id]`
+
+Remove container:
+`docker container rm [container_id]`
+
+Remove all containers:
+`docker container stop $(docker container ls –aq) && docker system prune –af ––volumes`
