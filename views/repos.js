@@ -1,6 +1,6 @@
 "use strict";
 
-const username = "EconomistDigitalSolutions";
+const username = "manumagalhaes";
 
 /**
  * Fetch user repos

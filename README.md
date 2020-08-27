@@ -1,6 +1,8 @@
 # Steps to deploy webpage into Docker
 
-(Supposing html, css and js for website are already done)
+### Courtesy
+
+I had no time to create a webpage that interacts with an API, so I got the code from [this repo](https://github.com/thinkful-ei-firefly/fetch-demo-github-api) as basis. Haven't had time to customise yet and may never have.
 
 ## Install Application Dependencies
 
@@ -11,7 +13,7 @@ Create package.json and run `npm intall`
   "name": "nodejs-image-demo",
   "version": "1.0.0",
   "description": "nodejs image demo",
-  "author": "Diana Prince <diana@justiceleague.com>",
+  "author": "Manu <manu@justiceleague.com>",
   "license": "MIT",
   "main": "app.js",
   "scripts": {
@@ -30,30 +32,29 @@ Create package.json and run `npm intall`
 Create your `app.js` files to define the routes. The code below creates Express app and router objects. It also defines base directory, port and host as variables, set the routes and mount the `router` middleware along with the statics assets.
 
 ```js
-var express = require("express");
-var app = express();
-var router = express.Router();
+const express = require("express");
+const app = express();
+const router = express.Router();
 
-var path = __dirname + "/views/";
+const path = __dirname + "/views/";
 
-// Constants
 const PORT = 8080;
 const HOST = "0.0.0.0";
 
-router.use(function (req, res, next) {
+router.use((req, res, next) => {
   console.log("/" + req.method);
   next();
 });
 
-router.get("/", function (req, res) {
+router.get("/", (req, res) => {
   res.sendFile(path + "index.html");
 });
 
 app.use(express.static(path));
 app.use("/", router);
 
-app.listen(8080, function () {
-  console.log("Example app listening on port 8080!");
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
 });
 ```
 
@@ -95,9 +96,10 @@ Dockerfile
 .dockerignore
 ```
 
-Build the application image using the docker build command:
+Build the application image using the docker build command:  
+_it won't accept capital letters_
 
-`docker build -t manu/reposlist .`
+`docker build -t manu/repos-list .`
 
 The . specifies that the build context is the current directory.
 
@@ -107,20 +109,17 @@ Check your images:
 
 Run the following command to build a container using this image:
 
-`docker run --name reposlis -p 80:8080 -d manu/reposlist` 
-```
+`docker run --name repos-list -p 80:8080 -d manu/repos-list`
 
-Inspect the list of your running containers with docker ps:
+Inspect the list of running containers with docker ps:
 
-```docker ps```
+`docker ps`
 
 It should be running on localhost. To stop it, run
 
-```docker stop 64dc71```
+`docker stop 64dc71` (or whatever is the ID)
 
-
-
--------------------------------------------------------------------------------
+---
 
 Useful:
 If stopped containers don't allow you to remove images:
