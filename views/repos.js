@@ -1,14 +1,14 @@
 "use strict";
 
-const username = "manumagalhaes";
+const USERNAME = process.env.USERNAME;
 
 /**
  * Fetch user repos
  */
 const getRepos = function () {
-  fetch(`https://api.github.com/users/${username}/repos`)
+  fetch(`https://api.github.com/users/${USERNAME}/repos`)
+    // fetch(`https://api.github.com/users/manumagalhaes/repos`)
     .then((response) => response.json())
-    // 👇 You MUST work with the data HERE 👇
     .then((jsonData) => {
       extractData(jsonData);
     })
