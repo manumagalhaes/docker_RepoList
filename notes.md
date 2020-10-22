@@ -71,7 +71,7 @@ Crete a file called Dockerfile and paste:
 [Dockerfile cheat 2](https://developer.okta.com/blog/2017/08/28/developers-guide-to-docker-part-2)
 
 ```Dockerfile
-FROM node:10-alpine
+git cFROM node:10-alpine
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
